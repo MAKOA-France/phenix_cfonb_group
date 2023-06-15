@@ -1,5 +1,5 @@
-name: 'fne phenix'
+name: 'Cfonb phenix'
 type: module
-description: 'for fne '
+description: 'for cfonb '
 core_version_requirement: '^8 || ^9'
 package: 'Custom'
