@@ -6,6 +6,64 @@
  */
 function phenix_cfonb_group_form_alter (&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
   $form['#attached']['library'][] = 'phenix_cfonb_group/phenix_cfonb_group';
+  
+  /**
+   * Ajout custom text au dessus des boutons actions, soit "exuser" ou "exporter (excel)"
+   */
+  // dump($form['#form_id']);views_form_attendance_sheet_attendance_sheet_edit_2879
+  if (strpos($form['#form_id'], "views_form_attendance_sheet_attendance_sheet") !== false || (strpos($form['#form_id'], 'views_form_civi_groupe_evenements_page') !== false)) {
+    
+    $custom_text = '« Les participants à la présente réunion reconnaissent avoir reçu le code de conduite qu’ils s’engagent à respecter. »';
+    foreach($form['header']['views_bulk_operations_bulk_form']['actions'] as $index => $value) {
+      if (is_numeric($index)) {
+        if (isset($form['header']['views_bulk_operations_bulk_form']['actions'][0])) {
+          $form['header']['views_bulk_operations_bulk_form']['actions'][0]['#prefix'] = '<p>' . $custom_text . '</p>';
+        }else  if (isset($form['header']['views_bulk_operations_bulk_form']['actions'][2])) {
+          $form['header']['views_bulk_operations_bulk_form']['actions'][2]['#prefix'] = '<p>' . $custom_text . '</p>';
+        }else  if (isset($form['header']['views_bulk_operations_bulk_form']['actions'][3])) {
+          $form['header']['views_bulk_operations_bulk_form']['actions'][3]['#prefix'] = '<p>' . $custom_text . '</p>';
+        }else {
+          $form['header']['views_bulk_operations_bulk_form']['actions'][4]['#prefix'] = '<p>' . $custom_text . '</p>';
+        }
+      }
+    }
+
+
+    foreach($form['actions'] as $index => $value) {
+      if (is_numeric($index)) {
+        if (isset($form['actions'][0])) {
+          $form['actions'][0]['#prefix'] = '<p>' . $custom_text . '</p>';
+        }else  if (isset($form['actions'][2])) {
+          $form['actions'][2]['#prefix'] = '<p>' . $custom_text . '</p>';
+        }else  if (isset($form['actions'][3])) {
+          $form['actions'][3]['#prefix'] = '<p>' . $custom_text . '</p>';
+        }else {
+          $form['actions'][4]['#prefix'] = '<p>' . $custom_text . '</p>';
+        }
+      }
+    }
+
+
+    
+    
+    if (strpos($form['#form_id'], 'views_form_civi_groupe_evenements_page') !== false) {
+      foreach($form['output'] as $index => $value) {
+        if (is_numeric($index)) {
+          if (isset($form['output'][0])) {
+            $form['output'][0]['#prefix'] = '<p>' . $custom_text . '</p>';
+          }else  if (isset($form['output'][1])) {
+            $form['output'][1]['#prefix'] = '<p>' . $custom_text . '</p>';
+          }else if (isset($form['output'][2])) {
+            $form['output'][2]['#prefix'] = '<p>' . $custom_text . '</p>';
+          }else if (isset($form['output'][3])) {
+            $form['output'][3]['#prefix'] = '<p>' . $custom_text . '</p>';
+          }else {
+            $form['output'][4]['#prefix'] = '<p>' . $custom_text . '</p>';
+          }
+        }
+      }
+    }
+  }
 }
 
 
@@ -30,3 +88,4 @@ function phenix_cfonb_group_entity_view_alter(array &$build, \Drupal\Core\Entity
     $build['_layout_builder'][0]['content'][$second_keys]['content'][0]['#context']['value'] = $title_frontend;
   }
 }
+ 
