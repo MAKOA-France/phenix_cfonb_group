@@ -1,12 +1,91 @@
 <?php 
 
+use \Drupal\views\Views;
+/**
+ * Implements hook_preprocess_page().
+ */
+function phenix_cfonb_group_preprocess_page(&$variables)
+{
+  $variables['#attached']['library'][] = 'phenix_cfonb_group/phenix_cfonb_group';
+  $current_path = \Drupal::service('path.current')->getPath();
+  if (strpos($current_path, '/feuille-de-presence/') !== false) {
+
+    // Replace 'your_view_name' with the machine name of your view.
+    $view_name = 'attendance_sheet';
+
+    // Replace 'your_view_name' with the machine name of your view.
+
+    // Replace 'your_display_id' with the machine name of the display you want to print.
+    $display_id = 'attendance_sheet_edit';
+    // Load the view.
+    $view = Views::getView($view_name);
+
+    // Check if the view exists.
+    if ($view) {
+      // Set the display ID.
+      $view->setDisplay($display_id);
+
+
+      // Execute the view.
+      $view->preExecute();
+      $view->execute();
+
+      // Print the view programmatically.
+      $html = render($view->render());
+      $view->args['data-views'] = $html;
+      // dump($view->footer);
+      $current_area_footer = $view->args['area']->options['content']['value'];
+      if ($view->args['area']) {
+        $view->args['area']->options['content']['value'] = '<a id="printerParticipants" data-content-to-print="' . $html . '"  onclick="window.print()"  href="#" >Imprimer la liste</a>';
+      }
+    }
+  }
+
+}
+
+
+
+use Drupal\views\ViewExecutable;
+
+/**
+ * Implements hook_views_pre_view().
+ */
+function phenix_cfonb_group_views_pre_view(ViewExecutable $view, $display_id, array &$args) {
+  // Check if it's the view you want to alter.
+  if ($view->id() == 'attendance_sheet' && $display_id == 'attendance_sheet_edit') {
+
+
+    // Replace 'your_view_name' with the machine name of your view.
+    $view_name = 'attendance_sheet';
+
+    // Replace 'your_view_name' with the machine name of your view.
+
+    // Replace 'your_display_id' with the machine name of the display you want to print.
+    $display_id = 'attendance_sheet_edit';
+
+    // // Load the view.
+    // $viewc = Views::getView($view_name);
+
+    // Check if the view exists.
+    $html = render($view->render())->__toString();  
+    $html = str_replace('views-field views-field-edit-civicrm-participant', 'hidden', $html);
+    $html = str_replace('views-field views-field-views-bulk-operations-bulk-form', 'hidden', $html);
+    $html = str_replace('views-field views-field-register-date', 'hidden', $html);
+    // dump($html);
+    $html = str_replace('<table', '<table style="table {width: 100% !important; height: 2100px !important; border-collapse: collapse;width: 100%;margin-bottom: 1rem;border-radius: 3px;}" ', $html);
+    // dump($html);
+    $html = htmlspecialchars($html);
+    $view->attachment_after['#markup'] = '<footer><a id="printerParticipants" data-content-to-print="' . $html. '"  href="#" >Imprimer la liste</a></footer>';
+  }
+}
+
 
 /**
  * Implements hook_form_alter().
  */
 function phenix_cfonb_group_form_alter (&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
   $form['#attached']['library'][] = 'phenix_cfonb_group/phenix_cfonb_group';
-  
+
   /**
    * Ajout custom text au dessus des boutons actions, soit "exuser" ou "exporter (excel)"
    */
@@ -69,7 +148,16 @@ function phenix_cfonb_group_form_alter (&$form, \Drupal\Core\Form\FormStateInter
 
 
 function phenix_cfonb_group_preprocess_views_view_field(&$variables) {
-
+  
+  $view = $variables['view'];
+  $field = $variables['field'];
+  $requests = \Drupal::request();
+  $row = $variables['row'];
+  if ($view->storage->id() == 'recherche' &&  $view->current_display == 'resultats_recherche') {
+    if ($field->field == 'rendered_item') {
+      // dump($row);
+    }
+  }
 }
 
 

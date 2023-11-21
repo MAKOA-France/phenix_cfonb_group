@@ -1,5 +1,5 @@
-phenix_fne:
-  version: 2.0
+phenix_cfonb_group:
+  version: 2.2
   css:
     component:
       css/style.css: {}
