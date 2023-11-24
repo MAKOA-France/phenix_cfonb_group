@@ -69,7 +69,16 @@ function phenix_cfonb_group_form_alter (&$form, \Drupal\Core\Form\FormStateInter
 
 
 function phenix_cfonb_group_preprocess_views_view_field(&$variables) {
-
+  
+  $view = $variables['view'];
+  $field = $variables['field'];
+  $requests = \Drupal::request();
+  $row = $variables['row'];
+  if ($view->storage->id() == 'recherche' &&  $view->current_display == 'resultats_recherche') {
+    if ($field->field == 'rendered_item') {
+      // dump($row);
+    }
+  }
 }
 
 
