@@ -1,0 +1,7 @@
+phenix_cfonb_group.save.pdf:
+  path: '/meeting/savepdf'
+  defaults:
+    _controller: '\Drupal\phenix_cfonb_group\Controller\PhenixController::savePdf'
+    _title: 'Tous les marques'
+  requirements:
+    _permission: 'access content'
