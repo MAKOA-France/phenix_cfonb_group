@@ -68,7 +68,18 @@ var elementsToRemove = document.querySelectorAll('.hidden');
             }
             printWindow.print();
             
-            console.log(' hh', contentToPrint);
+
+            // Attach an event listener to the 'afterprint' event
+            window.addEventListener('afterprint', function() {
+              // Call the performAjaxRequest function after the print operation is complete
+              alert(' window')
+            });
+            // Attach an event listener to the 'afterprint' event
+            printWindow.addEventListener('afterprint', function() {
+              // Call the performAjaxRequest function after the print operation is complete
+              alert(' print window')
+            });
+
             $.ajax({
               url: '/meeting/savepdf',
               type: "POST",
