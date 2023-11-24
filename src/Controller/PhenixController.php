@@ -61,13 +61,7 @@ class PhenixController extends ControllerBase
         $docAlreadyExist = $this->checkIfDocumentFeuillePresenceExisteDeja ($idEvent);
         if ($docAlreadyExist) {
             $mid = $docAlreadyExist->mid;
-            // Load the existing media entity based on your criteria.
-            $existingMedia = \Drupal::entityTypeManager()
-                ->getStorage('media')
-                ->loadByProperties([
-                'bundle' => 'document',
-                'mid' => $mid,
-                ]);
+            $existingMedia = Media::load($mid);
             
               // Update the necessary fields.
             $existingMedia->set('field_media_document', ['target_id' => $temp_file->id()]);
@@ -88,6 +82,8 @@ class PhenixController extends ControllerBase
                 'target_id' => $temp_file->id(), // Lien vers le fichier temporaire
                 ],
             ]);
+
+            $media->set('field_type_de_document', 30);//30 id feuille de presence
 
             // Sauvegarder le média
             $media->save();
