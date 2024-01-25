@@ -59,8 +59,44 @@
 	width: 85%;
 }
 #auth_box.password #bottom_part {
-	    margin-top: -110px;
+	    /* margin-top: -110px; */
 }
+
+.page-user-password .form-actions.js-form-wrapper.form-wrapper {
+	display: inline-flex;
+}
+
+.page-user-password .js-form-item.form-item.js-form-type-textfield.form-item-name.js-form-item-name {
+	text-align: center;
+}
+.page-user-password .back-to-login a {
+	color: black;
+}
+.page-user-password #block-b-zf-content .user-pass{
+	width : 100% !important;
+}
+.page-user-password .back-to-login {
+	
+    margin-top: 1rem;
+	padding: 5px 20px;
+    height: 29px;
+    font-size: 1rem;
+    background-color: #eee;
+    color: #0a0a0a;
+    text-shadow: 0 1px #e3f1f1;
+    border: 1px solid;
+    border-color: #ccc;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    outline: 0;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    background-image: none;
+    box-shadow: none;
+}
+
 #auth_box.password #bottom_part .login_link {
 	display: flex;
   justify-content: center;
