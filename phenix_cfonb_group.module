@@ -197,3 +197,31 @@ function phenix_cfonb_group_views_query_alter(\Drupal\views\ViewExecutable $view
     );
   }
 }
+
+
+/**
+ *
+ * Implements template_preprocess_media().
+ */
+function phenix_cfonb_group_preprocess_media(&$variables) {
+  // Check if the media type is 'document'.
+  if ($variables['media']->bundle() === 'document') {
+    if ($variables['media']->hasField('field_media_document')) {
+      // Load the file entity.
+      $file = $variables['media']->get('field_media_document')->entity;
+      // Check if the file is loaded.
+      if ($file) {
+        // Modify the file link.
+        $file_uri = $file->getFileUri();
+        $absolute_uri = file_create_url($file_uri);
+
+        $file->setFileUri($absolute_uri);
+        // Update the media variable with the modified file.
+        $variables['media']->set('field_media_document', $file);
+        
+        // Add the absolute file URL to the variables array.
+        // $variables['file_url'] = $absolute_uri;
+      }
+    }
+  }
+}
