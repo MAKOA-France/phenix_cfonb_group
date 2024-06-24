@@ -158,7 +158,45 @@ function phenix_cfonb_group_preprocess_views_view_field(&$variables) {
       // dump($row);
     }
   }
+
+  if ($view->storage->id() == 'media' &&  $view->current_display == 'media_page_list') {
+    if ($field->field == 'name') {
+      $title = $field->getValue($row);
+      $entity = $row->_entity;
+      $file_entity = $entity->field_media_document->entity;
+      $mid = getNodeFieldValue($row->_entity, 'mid');
+      $idTokenized = base64_encode($mid);
+      $filename = getNodeFieldValue($file_entity, 'filename');
+      // dump(getNodeFieldValue($row->_entity, 'mid'), $view, $variables['output'] );
+      
+
+      $variables['output'] = ['#markup' => '<a href="/media/' . $mid . '/download?token=' . $idTokenized . '"> ' . $filename  . '</p>'];
+    }
+
+  }
 }
+
+function getNodeFieldValue ($node, $field) {
+  $value = '';
+  if ($node) {
+
+    $getValue = $node->get($field)->getValue();
+    if (!empty($getValue)) {
+      if (isset($getValue[0]['target_id'])) { //For entity reference (img / taxonomy ...)
+        $value = $getValue[0]['target_id'];
+      }elseif (isset($getValue[0]['value']))  { //For simple text / date
+        $value = $getValue[0]['value'];
+      }else if(isset($getValue[0]['uri'])) {
+        $value = $getValue[0]['uri'];
+      }else { //other type of field
+        
+      }
+    }
+  }
+  return $value;
+}
+
+
 
 
 
