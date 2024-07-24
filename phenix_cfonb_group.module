@@ -213,7 +213,7 @@ function phenix_cfonb_group_media_access(\Drupal\Core\Entity\EntityInterface $en
         }
       }
     }
-     return  \Drupal\Core\Access\AccessResult::forbidden(); //commenté pour l'instant car les adherent ne peuvent pas acceder aux telechargement de document si on met "forbidden"
+    //  return  \Drupal\Core\Access\AccessResult::forbidden(); //commenté pour l'instant car les adherent ne peuvent pas acceder aux telechargement de document si on met "forbidden"
   }
 }
 
