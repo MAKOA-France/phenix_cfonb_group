@@ -291,3 +291,82 @@ function phenix_cfonb_group_preprocess_media(&$variables) {
     }
   }
 }
+
+/**
+ * Implements hook_views_data().
+ */
+function phenix_cfonb_group_views_data() {
+  $data['views']['uid'] = [
+    'title' => t('Employeur'),
+    'help' => t('Displays custom data.'),
+    'field' => [
+      'id' => 'custom_field_1',
+    ],
+  ];
+  return $data;
+}
+
+
+/**
+ * Implements hook_views_post_build().
+ */
+function  phenix_cfonb_group_views_post_build(ViewExecutable $view) {
+  // Check if this is the correct view and display.
+  if ($view->id() == 'user_admin_people' /* && $view->current_display == 'default' */) {
+    // Add the custom markup field.
+    
+   /*  $contacts = \Civi\Api4\Contact::get(FALSE)
+      ->addSelect('employer_id.display_name')
+      ->addWhere('id', '=', 12781)
+      ->execute(); */
+
+
+
+    $field = [
+      'id' => 'custom_markup',
+      'table' => 'views',
+      'field' => 'nothing',
+      'label' => 'Custom Markupfffff',
+      'alter' => [
+        'text' => '<div class="my-custom-markup">This is custom markup text</div>',
+        'make_link' => FALSE,
+        'alter_text' => TRUE,
+        'word_boundary' => FALSE,
+        'ellipsis' => FALSE,
+        'strip_tags' => FALSE,
+        'trim' => FALSE,
+        'html' => TRUE,
+      ],
+      'element_type' => '',
+      'element_class' => '',
+      'empty' => '',
+      'hide_alter_empty' => TRUE,
+      'plugin_id' => 'field',
+    ];
+// dump($view->display_handler->options);
+    // Add the field to the view display.
+    $view->display_handler->options['fields']['custom_field'] = $field;
+  }
+}
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function phenix_cfonb_group_views_data_alter(array &$data) {
+  $data['views']['phase_filter'] = [
+    'title' => t('Filtre par dernièr accès'),
+    'filter' => [
+      'title' => t('Filtre par dernièr accès'),
+      'help' => t('Provides a custom filter for last access to the owner account.'),
+      'field' => 'access',
+      'id' => 'views_filter_last_access',// Expose the filter to users.
+      'expose' => [
+        'operator' => false, // Optional: Set to true to expose operator options.
+        'label' => t('Last Access Filter'), // Label for the exposed filter.
+        'identifier' => 'views_filter_last_access', // Unique identifier for the filter.
+        'multiple' => false, // Set to true if the filter can accept multiple values.
+        'reduce_duplicates' => false, // Optional: Reduce duplicate filter options.
+      ],
+    ],
+  ];
+}
