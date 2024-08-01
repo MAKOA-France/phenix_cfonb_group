@@ -34,32 +34,32 @@ class PhaseViewsFilter extends FilterPluginBase {
 
 
     //Envoi d'email 
-    $sitename = \Drupal::config('system.site')->get('name');
-    $langcode = \Drupal::config('system.site')->get('langcode');
-    $module = 'phenix_cfonb_group';
-    $key = 'custom_mail_key';
+    // $sitename = \Drupal::config('system.site')->get('name');
+    // $langcode = \Drupal::config('system.site')->get('langcode');
+    // $module = 'phenix_cfonb_group';
+    // $key = 'custom_mail_key';
 
-    $subject = "CFONB - INACTIVITE PENDANT PLUS DE 3 MOIS";
-    $reply = NULL;
-    $send = TRUE;
+    // $subject = "CFONB - INACTIVITE PENDANT PLUS DE 3 MOIS";
+    // $reply = NULL;
+    // $send = TRUE;
 
-    $params['message'] = "";
-    $params['subject'] = t($subject);
-    $params['options'] = [
-      'username' => "CFONB", // TODO: faire du ménage // $account->getUsername();
-      'title' => t('Pushmail CFONB'),
-      'test' => 'test',
-      //'footer' => t($footer),
-    ];
+    // $params['message'] = "";
+    // $params['subject'] = t($subject);
+    // $params['options'] = [
+    //   'username' => "CFONB", // TODO: faire du ménage // $account->getUsername();
+    //   'title' => t('Pushmail CFONB'),
+    //   'test' => 'test',
+    //   //'footer' => t($footer),
+    // ];
 
-    $params['cc'] = 'sitraka@makoa.fr';
-    $params['options']['uid'] = 1812;
-    $params['options']['user_mail'] = 'sitraka@makoa.fr';
-    $params['options']['user_name'] = 'sitraka';
+    // $params['cc'] = 'sitraka@makoa.fr';
+    // $params['options']['uid'] = 1812;
+    // $params['options']['user_mail'] = 'sitraka@makoa.fr';
+    // $params['options']['user_name'] = 'sitraka';
 
-    $mailManager = \Drupal::service('plugin.manager.mail');
+    // $mailManager = \Drupal::service('plugin.manager.mail');
 
-    // $result = $mailManager->mail('makoad8pushmail', $key, 'sitraka@makoa.fr', $langcode, $params, NULL, $send); // POUR TESTS
+    // // $result = $mailManager->mail('makoad8pushmail', $key, 'sitraka@makoa.fr', $langcode, $params, NULL, $send); // POUR TESTS
 
     $form['test']['#markup'] = '<p data-all-id="" class=" link-to-send-mail btn btn-primary" >Envoyer un courrie aux utilisateurs selectionnés</p>';
   }

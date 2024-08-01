@@ -5,3 +5,14 @@ phenix_cfonb_group.save.pdf:
     _title: 'Tous les marques'
   requirements:
     _permission: 'access content'
+
+
+custom_admin_page.view:
+  path: '/admin/utilisateur'
+  defaults:
+    _title: 'Les personnnes qui ne se sont pas connectés depuis plus de 1 ou 2 ou 3 mois'
+    _content: '\Drupal\views\Element\View::preRenderViewElement'
+    view_id: 'copie_de_personnes'  # Replace with your view's machine name
+    display_id: 'page_1'  # Replace with your view's display ID
+  requirements:
+    _permission: 'access content'    

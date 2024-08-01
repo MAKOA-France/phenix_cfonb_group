@@ -312,7 +312,7 @@ function phenix_cfonb_group_views_data() {
  */
 function  phenix_cfonb_group_views_post_build(ViewExecutable $view) {
   // Check if this is the correct view and display.
-  if ($view->id() == 'user_admin_people' /* && $view->current_display == 'default' */) {
+  if ($view->id() == 'copie_de_personnes' /* && $view->current_display == 'default' */) {
     // Add the custom markup field.
     
    /*  $contacts = \Civi\Api4\Contact::get(FALSE)
