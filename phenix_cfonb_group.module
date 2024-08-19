@@ -206,6 +206,9 @@ function phenix_cfonb_group_media_access(\Drupal\Core\Entity\EntityInterface $en
   if ($account->isAnonymous()) {
     if (\Drupal::request()->query->get('token')) {//s'il y a du parametre mcd dans le mail on autorise
       $mid = \Drupal::request()->attributes->get('media')->get('mid')->getValue()[0]['value'];
+
+      \Drupal::service('page_cache_kill_switch')->trigger();
+      \Drupal::cache()->invalidateAll();
       if ($mid) {
         $idTokenized = base64_encode($mid);
         
@@ -215,11 +218,15 @@ function phenix_cfonb_group_media_access(\Drupal\Core\Entity\EntityInterface $en
         }
         
         //Vérifie si le document n'est pas resrevé aux adhérents
-        if ($entity->hasField('field_document_reserve_aux_adher') && getNodeFieldValue($entity, 'field_document_reserve_aux_adher')) {
-          return  \Drupal\Core\Access\AccessResult::forbidden(); //commenté pour l'instant car les adherent ne peuvent pas acceder aux telechargement de document si on met "forbidden"
+        if ($entity->hasField('field_document_reserve_aux_adher')) {
+          if (getNodeFieldValue($entity, 'field_document_reserve_aux_adher')) {
+            return  \Drupal\Core\Access\AccessResult::forbidden(); //commenté pour l'instant car les adherent ne peuvent pas acceder aux telechargement de document si on met "forbidden"
+          }else {
+            return \Drupal\Core\Access\AccessResult::allowed();
+          }
         }
       }
-      return \Drupal\Core\Access\AccessResult::allowed();
+      return  \Drupal\Core\Access\AccessResult::forbidden();
     }
     //  return  \Drupal\Core\Access\AccessResult::forbidden(); //commenté pour l'instant car les adherent ne peuvent pas acceder aux telechargement de document si on met "forbidden"
   }
