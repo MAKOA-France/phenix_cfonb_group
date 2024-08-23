@@ -1,3 +1,1035 @@
+
+/**** START ASSET INJECTOR ***/
+
+/*** 1 /civicrm-group/*    **/
+[class^="page-civicrm-group-"] .ajouterunereunion {
+	border: 1px solid #af1f7b;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+}
+/*** end 1 **/
+
+/*** 2  Global    **/
+
+.ajouterunereunion{
+    color: #00000 !important;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow: inset 2px 2px 2px 0px rgb(255 255 255 / 50%), 7px 7px 20px 0px rgb(0 0 0 / 10%), 4px 4px 5px 0px rgb(0 0 0 / 10%);
+    outline: none;
+    margin-bottom: 1rem;
+}
+
+.ajouterunereunion {
+  border: none;
+  color: #000;
+}
+.ajouterunereunion a:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  direction: rtl;
+  z-index: -1;
+  box-shadow:
+   -7px -7px 20px 0px #fff9,
+   -4px -4px 5px 0px #fff9,
+   7px 7px 20px 0px #0002,
+   4px 4px 5px 0px #0001;
+  transition: all 0.3s ease;
+}
+.ajouterunereunion a:hover {
+  color: #000;
+}
+.ajouterunereunion a:hover:after {
+  left: auto;
+  right: 0;
+  width: 100%;
+}
+.ajouterunereunion a:active {
+  top: 2px;
+}
+
+/*** end 2 **/
+
+
+/*** 3- breadcrumb ==>  Global   **/
+#block-breadcrumbs .breadcrumb li a{
+    background: url(/files/2022-03/BreadCrumbleBG.png) no-repeat scroll right 8px transparent;
+    color: #003a74;
+    line-height: 18px;
+    padding: 9px 15px 15px 5px;
+    font-weight: normal;
+    font-size: 1rem;
+}
+#block-breadcrumbs{
+    margin-left: -26px;
+}
+#block-breadcrumbs .breadcrumb li:hover{
+    text-decoration: underline;
+ }
+#block-breadcrumbs .breadcrumb li a:hover{
+   text-decoration: underline;
+}
+/* Sur tous types d'écran, quand la largeur de la fenêtre est comprise entre 1024px et 1280px 
+@media all and (max-device-width: 480px){
+ #block-breadcrumbs-2 #block-breadcrumbs{
+    position:absolute;
+    bottom: 148.82rem;
+  }
+}
+*/
+
+/*** end 3 **/
+
+
+/*** 4- button-purple ==>  Global   **/
+.button-purple {
+    border: 1px solid #af1f7b;
+    padding: 1rem 1rem;
+    border-radius: 3px;
+    text-align: center;
+  }
+
+/*** end 4 **/
+
+
+
+
+
+/*** 5- civicrm ==>  /civicrm/*   **/
+
+
+/* Contact / Update / custom field "Activite Principale" */
+
+.path-civicrm input[name^=custom_47] {
+  width: 90%;
+}
+
+.path-civicrm input[name^=custom_54] {
+  width: 90%;
+}
+
+.path-civicrm input[name^=custom_61] {
+  width: 90%;
+}
+
+.path-civicrm input[name^=custom_68] {
+  width: 90%;
+}
+
+
+
+
+/*contact / tab Cases / title too big */
+
+.path-civicrm #bootstrap-theme .element-invisible {
+visibility: collapse;  
+width:100%;
+}
+
+/* contact / activity list width 630 px > 100%  */
+
+.path-civicrm #bootstrap-theme .civicase__activity-feed__body__list {
+  max-width: unset;
+}
+
+.path-civicrm #bootstrap-theme .civicase__activity-feed__body__list[style] {
+  height: unset !important; 
+}
+
+
+.path-civicrm #bootstrap-theme .civicase__activity-feed__body__details[style] {
+  height: unset !important; 
+}
+
+
+/* contact / activity list dropdown menu width */
+.path-civicrm #bootstrap-theme .dropdown-menu {
+  min-width: 215px !important;
+}
+
+/* contact / activity list  new activity button  */
+.path-civicrm .civicase__contact-activity-tab__add .select2-container .select2-choice {
+  width: unset !important;
+}
+
+
+/* MOSAICO   */
+
+/* marge menu  */
+
+.page-civicrm.toolbar-tray-open.toolbar-horizontal iframe.ui-front {
+  top: 40px !important;
+}
+
+
+/*** end 5 **/
+
+
+
+/*** 6- civicrm-event print participant	 ==>  /feuille-de-presence/*   **/
+
+
+/*** feuille de presence **/
+@media print {
+  
+	.section-feuille-de-presence #content { 
+	size: A4;
+	margin: 0;
+	}
+	
+	 body.section-feuille-de-presence , .section-feuille-de-presence #content {
+	  width: 210mm;
+	  height: 297mm;
+	}
+	body.section-feuille-de-presence ,  .section-feuille-de-presence input, .section-feuille-de-presence textarea, .section-feuille-de-presence select{
+	  color:#000;
+	  background:none;
+	}
+	.section-feuille-de-presence #sidebar_left, .reunion__description, .section-feuille-de-presence .reunion__documents  {
+	 visibility:hidden; 
+	 display: none;
+	}
+  
+	/*.site-footer,
+	.shortcut-action
+	#toolbar*/
+	.section-feuille-de-presence .tabs,
+	.section-feuille-de-presence .top-bar,
+	.section-feuille-de-presence .navigation,
+	.section-feuille-de-presence .fa-search,
+	.section-feuille-de-presence .menu-item,
+	.section-feuille-de-presence .block-core,
+	.section-feuille-de-presence a,
+	.section-feuille-de-presence #wrap a,
+	.section-feuille-de-presence .block-views-block-civievents-base-sur-le-contact-block-2-2, /*#sidebar_lef*/
+	.section-feuille-de-presence .basic__body.quickedit-field,
+	.section-feuille-de-presence .basic__body,
+	.section-feuille-de-presence .block-views-block-civievents-base-sur-le-contact-block-1-2,
+	.section-feuille-de-presence .block-views-block-civievents-base-sur-le-contact-block-2-2{
+	  display:none;
+	}
+	
+	.section-feuille-de-presence a:after {
+	 content: " (" attr(href) ")";
+	 display:none;
+	}
+	.section-feuille-de-presence .block-b-zf-content{
+	margin-top: -60px;
+	}
+	.section-feuille-de-presence .one-sidebar .main-content,
+	.section-feuille-de-presence .two-sidebars .main-content{
+	  width:100%;
+	}
+	
+	.section-feuille-de-presence .layout-container {
+	width: 100%;
+	}
+	* {
+	background-color: transparent;
+	}
+	
+	.section-feuille-de-presence #content,
+	.title {
+	  margin: 20px 0;
+	  
+	}
+	.section-feuille-de-presence a:hover, .section-feuille-de-presence a:active, .section-feuille-de-presence a:link, .section-feuille-de-presence a:visited {
+	color: black;
+	}
+  
+	.section-feuille-de-presence #content a:link:after, .section-feuille-de-presence #content a:visited:after {
+	  content: " (" attr(href) ") ";
+	  font-size: 0.8em;
+	  font-weight: normal;
+	}
+	/*
+	.featured-bottom{
+	  width:960px;
+	  margin:0;
+	  padding:0;
+	  border:none;
+	
+	.featured-bottom-first,
+	.featured-bottom-second,
+	.featured-bottom-third{
+	  width:250px;
+	}  }*/
+	
+	/*#comments .title,*/
+	.section-feuille-de-presence #comments form,
+	.section-feuille-de-presence .comment-forbidden{
+	display:none;
+  }
+  .section-feuille-de-presence .layout--onecol .layout__region {
+	  page-break-after: auto;
+  }
+  
+  }
+  /* boutton imprimer */
+  .section-feuille-de-presence footer{
+	text-align: right;
+  }
+  .section-feuille-de-presence footer a#printerParticipants{
+	border: 1px solid #af1f7b;
+	padding: .5rem 1rem;
+	border-radius: 3px;
+	margin-top: 1rem;
+  }
+  
+
+
+/******** page civicrm *******/
+
+
+@media print {
+  
+	.path-civicrm #content { 
+	size: A4;
+	margin: 0;
+	}
+	
+	body.path-civicrm , .path-civicrm #content {
+	  width: 210mm;
+	  height: 297mm;
+	}
+	body.path-civicrm ,.path-civicrm input,.path-civicrm textarea,.path-civicrm select{
+	  color:#000;
+	  background:none;
+	}
+	.path-civicrm #sidebar_left, .path-civicrm .reunion__description, .path-civicrm .reunion__documents  {
+	 visibility:hidden; 
+	 display: none;
+	}
+  
+	/*.site-footer,
+	.shortcut-action
+	#toolbar*/
+	.path-civicrm .tabs,
+	.path-civicrm .top-bar,
+	.path-civicrm .navigation,
+	.path-civicrm .fa-search,
+	.path-civicrm .menu-item,
+	.path-civicrm .block-core,
+	.path-civicrm a,
+	.path-civicrm #wrap a,
+	.path-civicrm .block-views-block-civievents-base-sur-le-contact-block-2-2, /*#sidebar_lef*/
+	.path-civicrm .basic__body.quickedit-field,
+	.path-civicrm .basic__body,
+	.path-civicrm .block-views-block-civievents-base-sur-le-contact-block-1-2,
+	.path-civicrm .block-views-block-civievents-base-sur-le-contact-block-2-2{
+	  display:none;
+	}
+	
+	.path-civicrm a:after {
+	 content: " (" attr(href) ")";
+	 display:none;
+	}
+	.path-civicrm .block-b-zf-content{
+	margin-top: -60px;
+	}
+	.path-civicrm .one-sidebar .main-content,
+	.path-civicrm .two-sidebars .main-content{
+	  width:100%;
+	}
+	
+	.path-civicrm .layout-container {
+	width: 100%;
+	}
+	.path-civicrm * {
+	background-color: transparent;
+	}
+	
+	.path-civicrm #content,
+	.path-civicrm .title {
+	  margin: 20px 0;
+	  
+	}
+	.path-civicrm a:hover, .path-civicrm a:active, .path-civicrm a:link, .path-civicrm a:visited {
+	color: black;
+	}
+  
+	.path-civicrm #content a:link:after, .path-civicrm #content a:visited:after {
+	  content: " (" attr(href) ") ";
+	  font-size: 0.8em;
+	  font-weight: normal;
+	}
+	/*
+	.featured-bottom{
+	  width:960px;
+	  margin:0;
+	  padding:0;
+	  border:none;
+	
+	.featured-bottom-first,
+	.featured-bottom-second,
+	.featured-bottom-third{
+	  width:250px;
+	}  }*/
+	
+	/*#comments .title,*/
+	.path-civicrm #comments form,
+	.path-civicrm .comment-forbidden{
+	display:none;
+  }
+  .path-civicrm .layout--onecol .layout__region {
+	  page-break-after: auto;
+  }
+  
+  }
+  /* boutton imprimer */
+  .path-civicrm footer{
+	text-align: right;
+  }
+  .path-civicrm footer a#printerParticipants{
+	border: 1px solid #af1f7b;
+	padding: .5rem 1rem;
+	border-radius: 3px;
+	margin-top: 1rem;
+  }
+  
+
+
+/*** end 6 **/
+
+
+
+/*** 7- civicrm-group	 ==>   /civicrm-group/*   **/
+  .section-civicrm-group div.basic__body{
+	text-align: right;
+  }
+  .section-civicrm-group div.basic__body p a{
+	border: 1px solid #af1f7b; /*#D92026*/
+	padding: .5rem 1rem;
+	border-radius: 3px;
+  }
+
+/*** end 7 **/
+
+
+
+/*** 8- civicrm event edit déplacer les bouttons Document && Enregistrer		 ==>   /civicrm-event/*   **/
+@media only screen and (min-width: 768px) {
+	.section-civicrm-event #civicrm-event-reunion-edit-form > div > div.layout-region.layout-region-civicrm-entity-main{
+		 width: 100%;
+	}  
+	  .section-civicrm-event #edit-actions-submit  {
+	   position: fixed;
+	   bottom: 45%;
+	   right: 6%;
+	   z-index: 9999;
+	  }
+	  /*
+	  #edit-field-documents-open-button{
+	  position: fixed;
+	  bottom:50%;
+	  right: 4%;
+	  z-index: 9999;
+	  }*/
+	  
+	  /*champs formulaire*/
+	 .section-civicrm-event  #edit-start-date-wrapper{
+	   /* background: darkgoldenrod; */
+		width: 40%;
+		float: left;
+	  }
+	  .section-civicrm-event #edit-end-date-wrapper{
+		/*background: darkgrey;*/
+		width: 100%;
+	  }
+	  .section-civicrm-event #edit-end-date-0-value,
+	  .section-civicrm-event #edit-start-date-0-value{
+		display: flex;
+		justify-content: space-between;
+	 }
+	.section-civicrm-event #edit-start-date-0 > div{
+		padding-right: 71px;
+	 }
+	 .section-civicrm-event #edit-end-date-0{
+		padding-left:  238px;
+	 }
+	 
+	.section-civicrm-event #edit-end-date-0--description,
+	.section-civicrm-event #edit-start-date-0--description{
+	   display: none;
+	 }
+	}
+	.section-civicrm-event .layout-civicrm-entity-form #edit-actions-submit {
+		position: relative;
+		right: auto;
+	}
+	@media only screen and (min-width: 768px) {
+		.section-civicrm-event .layout-civicrm-entity-form #edit-actions-submit {
+		  position: relative;
+		  right: auto;
+		}
+	  }
+
+/*** end 8 **/
+
+
+
+/*** 9- Communication background	==>   Global   **/
+.grid-container.full.hero.communication{
+	background: url("/files/2021-10/cfonb-2020-illustration-27 (2).jpg");
+	background-repeat: no-repeat;
+	  
+	  max-width: 1170px;
+	  margin-top: 1rem;
+  }
+  
+  
+
+/*** end 9 **/
+
+
+
+/*** 10- Communications et recherche pager items is-active mark	==>   /communication & /recherche  **/
+.page-recherche .pager__item a:hover{
+    border-bottom: 3px solid #af1f7b;
+}
+
+.page-recherche .pager__item--active a{
+    border-bottom: 3px solid #af1f7b;
+    font-weight: 700;
+}
+.page-communication .pager__item a:hover{
+    border-bottom: 3px solid #af1f7b;
+}
+
+.page-communication .pager__item--active a{
+    border-bottom: 3px solid #af1f7b;
+    font-weight: 700;
+}
+
+/*** end 10 **/
+
+
+
+/*** 11- Document Thumbnail	==>   Global   **/
+
+/*
+Vignettes des Documents (Media) alignées avec le name
+*/
+
+.document__thumbnail.quickedit-field  {
+    float: left;
+    vertical-align: center;
+    margin-right: 5px;
+}
+
+.document__media-document.quickedit-field  {
+    float: none;
+    margin-bottom: 10px;
+}
+/*** end 11 **/
+
+
+
+
+/*** 12- Koama Illustration			==>   Global   **/
+
+.illustration_koama {
+    float: left;
+    vertical-align: top;
+    border-width: 0px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+/*** end 12 **/
+
+
+
+
+/*** 13- logo			==>   Global   **/
+
+.site-logo img {
+    height: 118px;
+    /*width: 190px;*/
+}
+@media all and (max-device-width: 480px){
+  .site-logo img {
+    display:block;
+    width:auto;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  
+  /*header .grid-x .align-middle{
+    display: flex;
+    justify-content: space-between;
+  }*/
+}
+/*** end 13 **/
+
+
+
+
+
+/*** 14- Masquer commentaires dans feuille de présence modifiable(impression liste)			==>   Global   **/
+
+@media print{
+	.form-checkbox,
+	#edit-actions #edit-4,
+	#edit-actions #edit-2,
+	#edit-actions #edit-0--2,
+	#vbo-action-form-wrapper,
+	#highlighted,
+	#block-b-zf-content > div > div > header > h1{
+	  display: none;
+	}
+  }
+/*** end 14 **/
+
+
+/*** 15-menu principal		==>   Global   **/
+
+#main-menu .grid-container nav {
+    display: inline-block;
+
+}
+#main-menu .grid-container nav {
+    display: inline-block;
+}
+ul.submenu.is-dropdown-submenu {
+    margin-left: 10rem;
+}
+.menu .menu-item--active-trail > a, .menu li a.is-active {
+    background: transparent;
+}
+.menu .menu-item--active-trail > a, .menu li a:hover {
+    background: transparent;
+}
+.menu li a:hover {
+    color: #B01F7C;
+    text-decoration: none;
+}
+
+#sidebar_left .menu .menu-item--active-trail a.is-active{
+  color: #af1f7b;
+  text-decoration: underline;
+}
+.dropdown.menu > li > a.is-active,
+.menu .is-active > a {
+    color: #B01F7C;
+    text-decoration: underline;
+}
+.dropdown.menu > li.is-dropdown-submenu-parent > a::after {
+    border-color: #B01F7C transparent transparent;
+}
+
+/*menu user*/
+.menu--account .menu .menu-item--active-trail a.is-active {
+    background: transparent;
+    color: #af1f7b;
+    border-color: #af1f7b;
+    border-bottom: 4px solid #af1f7b;
+}
+/*** end 15 **/
+
+
+/*** 16- 	menu principal + menu + slideshow		==>   Global   **/
+
+#main-menu.top-bar {
+    background: #F1F1F1;
+}
+#main-menu .grid-container nav {
+    display: inline-block;
+    
+}
+ul .submenu.is-dropdown-submenu {
+    margin-left: 0;
+    z-index: 10;
+}
+.menu .menu-item--active-trail > a, .menu li a.is-active {
+    background: transparent;
+}
+.menu .menu-item--active-trail > a, .menu li a:hover {
+    background: transparent;
+}
+
+
+.menu li a:hover {
+    color: #B01F7C;
+    text-decoration: none;
+}
+.dropdown.menu > li > a.is-active,
+.menu .is-active > a {
+    color: #B01F7C;
+}
+.dropdown.menu > li .is-dropdown-submenu-parent > a::after {
+    border-color: #B01F7C transparent transparent;
+}
+
+
+/* Slideshow home */
+
+#block-views-block-block-hero-block-1 {
+    background: url("/files/2021-10/carrouselBg.png");
+    max-height: 214px;
+    margin-bottom: 1.5rem;
+}
+
+
+#block-views-block-block-hero-block-1 .views-field-field-texte-slider {
+    max-width: 60%;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    color: #003D71;
+    
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+#block-views-block-actualites-block-1 .more-link a {
+  margin-right: .5rem;
+}
+
+
+
+
+/*** end 16 **/
+
+
+/*** 17-modifier titre groupe 243	(WEIRD but i'll keep it like this !!!)	==>   Global   **/
+.path-civicrm-group #block-adminimal-theme-page-title > h1 > em,
+.path-civicrm-group #block-adminimal-theme-breadcrumbs > nav > ol > li:nth-child(2) > a,
+.path-civicrm-group #block-adminimal-theme-breadcrumbs > nav > ol > li:nth-child(3){
+     visibility: hidden;
+    position: relative;
+}
+.path-civicrm-group #block-adminimal-theme-page-title > h1 > em:after{
+    visibility: visible;
+    position: absolute;
+    /* //top: 0; */
+    left: 0;
+    content: "CPB- GT Miroir AIGCEV";
+}
+.path-civicrm-group #block-adminimal-theme-breadcrumbs > nav > ol > li:nth-child(2) > a:after{
+      visibility: visible;
+    position: absolute;
+    /* //top: 0; */
+    left: 0;
+    content: "CPB- GT Miroir AIGCEV";
+}
+
+
+
+
+/*** end 17 **/
+
+
+
+
+
+/*** 19-Pieds de page	==>   Global   **/
+
+#footer nav ul li.menu-item a {
+    font-size: 0.8rem;
+    padding: 0.85em 1em;
+    color: #fff;  
+    text-transform: uppercase;
+}
+#footer nav ul li.menu-item a:hover {
+    color: #eee;  
+    text-decoration: underline;
+}
+/*** end 19 **/
+
+
+/*** 20- Pour les formulaires	==>   Global   **/
+.js-form-item .description, .text-full {
+	font-size: 12px;
+	/*font-style: italic;*/
+	margin-bottom: 1rem;
+  }
+  .js-form-item .fieldset-legend{
+	display: block;
+	margin: 0;
+	font-size: 0.875rem;
+	font-weight: normal;
+	line-height: 1.8;
+	color: #0a0a0a;
+  }
+  .field--type-datetime .form-item .form-date{
+	margin-bottom: 1rem;
+  }
+  
+  
+
+/*** end 20 **/
+
+
+
+/*** 22- responsive slider	==>   Global   **/
+
+@media (max-width: 500px){
+	/*logo*/
+	 .contextual-region .site-logo{
+	   display: flex;
+	   justify-content: center;
+	 }
+	/*fin logo*/
+	
+	/*menu principal*/
+	  .top-bar .menu--menu-principal .menu{
+		display: block;
+		padding-top: 0.6rem; 
+		padding-bottom: 0.6rem;
+		padding-left: 0.6rem;
+	  }
+	  .top-bar .menu--menu-principal .menu li{
+		padding-top: 0.6rem;
+	  }
+	/*fin menu*/
+  #block-views-block-block-hero-block-1 {
+	  max-height: 214vw;
+	  margin-bottom: 1.5rem;
+  }
+  
+  #block-views-block-block-hero-block-1 .views-field-field-texte-slider {
+	  max-width: 60%;
+	  position: absolute;
+	  top: 30%;
+	  left: 0;
+	  transform: translateY(-21%);
+	  color: #003D71;
+  }
+  .views-field-field-texte-slider .field-content h5, h3, p{
+	font-size: 0.8em;
+   /* padding-top: 1rem;*/
+	word-wrap: break-word;
+	overflow: hidden;
+	display: -webkit-box;
+	vertical-align: baseline;
+  }
+  .views-field-field-slide .field-content img{
+  
+	width: 100%;
+	height: 150px;
+	bottom: 0;
+  
+  }
+  
+  .views-slideshow-controls-bottom{
+	display: flex;
+	justify-content: center;
+  }
+  .views-slideshow-controls-bottom .views-slideshow-pager-bullets{
+	position: absolute;
+	margin-top: .5rem;
+  }
+  }
+  
+  /*tablette*/
+  @media (max-width: 810px){
+	/*logo*/
+	 .contextual-region .site-logo{
+	   display: flex;
+	   justify-content: center;
+	 }
+	/*fin logo*/
+	
+	/*menu principal*/
+	  .top-bar .menu--menu-principal .menu{
+		display: block;
+		padding-top: 0.6rem; 
+		padding-bottom: 0.6rem;
+		padding-left: 0.6rem;
+	  }
+	  .top-bar .menu--menu-principal .menu li{
+		padding-top: 0.6rem;
+	  }
+	/*fin menu*/
+  #block-views-block-block-hero-block-1 {
+	  max-height: 214vw;
+	  margin-bottom: 1.5rem;
+  }
+  
+  #block-views-block-block-hero-block-1 .views-field-field-texte-slider {
+	  max-width: 60%;
+	  position: absolute;
+	  top: 30%;
+	  left: 0;
+	  transform: translateY(-21%);
+	  color: #003D71;
+  }
+  .views-field-field-texte-slider .field-content h5, h3, p{
+	font-size: 0.8em;
+   /* padding-top: 1rem;*/
+	word-wrap: break-word;
+	overflow: hidden;
+	display: -webkit-box;
+	vertical-align: baseline;
+  }
+  .views-field-field-slide .field-content img{
+  
+	width: 100%;
+	height: 150px;
+	bottom: 0;
+  
+  }
+  
+  .views-slideshow-controls-bottom{
+	display: flex;
+	justify-content: center;
+  }
+  .views-slideshow-controls-bottom .views-slideshow-pager-bullets{
+	position: absolute;
+	margin-top: .5rem;
+  }
+  }
+  
+  
+  /*communication formulaire vue*/
+  @media screen and (min-width: 1024px){
+	#content .block-b-zf-content .contextual-region .views-exposed-form{
+	  display: flex;
+	  align-items: center;
+	}
+  
+	#content .block-b-zf-content .contextual-region .views-exposed-form .form-text{
+	  width: 90%;
+	  padding-left: none;
+	}
+	#content .block-b-zf-content .contextual-region .views-exposed-form #edit-field-description-value{
+	  width: 90%;
+	  margin-right: 2rem;
+	}
+	#content .block-b-zf-content .contextual-region .views-exposed-form #edit-submit-communication{
+	  margin-top: 2.7em;
+	  margin-left: 2em;
+	}
+  
+  
+  }
+/*** end 22 **/
+
+
+
+/*** 23 Réduire interligne sous groupe		==>   Global   **/
+
+/*réduire interligne sous groupe*/
+.civicrm-entity .layout__region li,
+.civicrm-entity .layout__region .block-views .contextual-region ul li{
+  margin-left: 1.5rem;
+  margin-bottom: 0;
+}
+/*** end 23 **/
+
+
+/*** 24- sidebar left	==>   Global   **/
+
+.sidebar .block-menu {
+    background: #eee;
+    padding: .5rem;
+    margin-bottom: 1.5rem;
+}
+/*** end 24 **/
+
+
+/*** 25 submitted	==>   Global   **/
+/*
+Publié le...
+type de contenu : rubrique (avec contenu)
+*/
+
+.submitted {
+    margin-bottom: 15px;
+}
+
+/*** end 25 **/
+
+
+/*** 26 tabs	==>   Global   **/
+.tabs.primary > li > a:hover{
+    background: #1C0221;
+}
+/*** end 26 **/
+
+
+/*** 26 user	==>   Global   **/
+
+.section-user .label{
+	background:white;
+  }
+  
+  .section-user #edit-language {
+   display: none;
+  }
+  
+  .section-user #edit-account {
+   margin-top:15px !important;
+  }
+  
+  
+  .section-user .password-parent label::before {
+	content: "Nouveau ";
+  }
+  
+  
+  .section-user select   {
+   margin:0 !important;
+  }
+  
+  .section-user input  {
+   margin:0 !important;
+  }
+  
+  .section-user .tabs {
+	border:none !important;  
+  }
+  
+  
+  .section-user .tabs-title > a {
+	  font-size: 24px;
+	  margin: 20px 40px 0px 0px;
+	  font-variant-caps: all-small-caps;
+	  padding:none !important;
+  }
+  
+  .section-user .tabs-title.is-active {
+	  text-decoration: underline;
+  }
+  
+  
+  .section-user .description {
+	font-size:12px;
+	font-style:italic;
+	margin-bottom: 1rem;
+  } 
+
+/*** end 26 **/
+
+
+/*** 27 verrou	==>   Global   **/
+
+.verrou img{
+	width: 300px;
+	height: auto;
+  }
+/*** end 27 **/
+
+
+
+
+
+/**** END ASSET INJECTOR ***/
+
 .path-frontpage #auth_box #middle_part > h2.title {
 	display: flex;
 	justify-content: center;
