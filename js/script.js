@@ -14,7 +14,9 @@
           var currentHref = jQuery('.path-media .field--type-file.field--name-field-media-document.field--widget-file-generic span a').attr('href');
 
           // Remove "index.php" from the href attribute
-          var modifiedHref = currentHref.replace('index.php/', '');
+          if (currentHref) {
+            var modifiedHref = currentHref.replace('index.php/', '');
+          }
 
           // Update the href attribute with the modified value
           jQuery('.path-media .field--type-file.field--name-field-media-document.field--widget-file-generic span a').attr('href', modifiedHref);

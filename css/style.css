@@ -1105,6 +1105,9 @@ p.link-to-send-mail.btn.btn-primary {
 .page-user-password .form-actions.js-form-wrapper.form-wrapper {
 	display: inline-flex;
 }
+.page-accueil-extranet div#highlighted .messages.messages--error {
+    display: none;
+}
 
 .page-user-password .js-form-item.form-item.js-form-type-textfield.form-item-name.js-form-item-name {
 	text-align: center;

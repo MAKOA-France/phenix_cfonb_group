@@ -1,5 +1,5 @@
 phenix_cfonb_group.content:
-  title: 'Personne qui ne se sont pas connecté depuis plus de 1, 2 ou 3 mois'
+  title: 'Personnes qui ne se sont pas connectées depuis plus de 1, 2 ou 3 mois'
   description: 'A custom admin page with no content.'
   parent: entity.user.collection
   route_name: custom_admin_page.view
