@@ -84,6 +84,75 @@ function phenix_cfonb_group_views_pre_view(ViewExecutable $view, $display_id, ar
  * Implements hook_form_alter().
  */
 function phenix_cfonb_group_form_alter (&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+
+
+
+  if ($form['#id'] == 'contact-message-demande-d-acces-a-l-extranet-form') {
+    $vla = '';
+    $allDoublons = [];
+
+    $uniqueOptions = ['_none' => 'Aucune'];
+$seenLabels = [];
+$hasTagHs = false;
+foreach ($form['field_groupe_bancaire']['widget']['#options'] as $key => $value) {
+  
+      if (is_numeric($key)) {
+
+          //Vérifier si le contact a une rélation au moins
+          $hadRelationship = \Civi\Api4\Relationship::get(FALSE)
+          ->addWhere('contact_id_b', '=', $key)
+          ->addWhere('is_active', '=', TRUE)
+          ->addWhere('relationship_type_id', '=', 5)
+          ->execute()->first();
+          
+          //check if contact is tagged "hors cible"
+          $entityTags = \Civi\Api4\EntityTag::get(False)
+          ->addWhere('entity_id', '=', $key)
+          ->addSelect('tag_id')
+          ->execute()->getIterator();
+          if ($entityTags) {
+            $allContactId = iterator_to_array($entityTags);
+            $allContactId = array_column($allContactId, 'tag_id');
+            if (in_array(15, $allContactId)) {
+              $hasTagHs = true;
+            }else {
+              $hasTagHs = false;
+            }
+          }
+
+          // dump($hadRelationship, $hasTagHs, $key);
+
+          $hadactivityContacts = \Civi\Api4\ActivityContact::get(FALSE)
+            ->addWhere('contact_id', '=', $key)
+            ->execute()->first();
+
+          if (!in_array($value, $seenLabels)) {
+            // Ajouter l'option au tableau des options uniques
+            if ($hasTagHs) {
+              if ($hadRelationship) {
+                $uniqueOptions[$key] = $value;
+              }
+            }
+            // Marquer le libellé comme déjà vu
+                $seenLabels[] = $value;
+          }
+            
+            $vla = $value;
+      }
+
+
+      
+    }
+
+    $form['field_groupe_bancaire']['widget']['#options'] = $uniqueOptions;
+    // dump($allDoublons);
+  }
+
+
+
+
+
   $form['#attached']['library'][] = 'phenix_cfonb_group/phenix_cfonb_group';
 
   /**
