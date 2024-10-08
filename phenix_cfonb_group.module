@@ -360,7 +360,7 @@ function phenix_cfonb_group_preprocess_media(&$variables) {
         $file->setFileUri($absolute_uri);
         // Update the media variable with the modified file.
         $variables['media']->set('field_media_document', $file);
-        
+        $file->setFilename($variables['media']->label());
         // Add the absolute file URL to the variables array.
         // $variables['file_url'] = $absolute_uri;
       }
