@@ -10,9 +10,18 @@ phenix_cfonb_group.save.pdf:
 custom_admin_page.view:
   path: '/admin/utilisateur'
   defaults:
-    _title: 'Les personnnes qui ne se sont pas connectés depuis plus de 1 ou 2 ou 3 mois'
+    _title: 'Les personnnes qui ne se sont pas connectées depuis plus de 1 ou 2 ou 3 mois'
     _content: '\Drupal\views\Element\View::preRenderViewElement'
     view_id: 'copie_de_personnes'  # Replace with your view's machine name
     display_id: 'page_1'  # Replace with your view's display ID
   requirements:
     _permission: 'access content'    
+
+
+phenix_cfonb_group.form.settings:
+  path: '/admin/config/system/mail-content-form'
+  defaults:
+    _form: '\Drupal\phenix_cfonb_group\Form\CustomConfigForm'
+    _title: 'Custom Form Settings ho'
+  requirements:
+    _permission: 'access content'        

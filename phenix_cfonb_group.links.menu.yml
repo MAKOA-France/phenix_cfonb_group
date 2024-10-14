@@ -4,3 +4,10 @@ phenix_cfonb_group.content:
   parent: entity.user.collection
   route_name: custom_admin_page.view
   weight: 100
+
+phenix_cfonb_group.form.settings:
+  title: 'Contenu du mailing lors de la creation utilisateur'
+  description: 'Settings for the custom form.'
+  parent: system.admin_config_system
+  route_name: phenix_cfonb_group.form.settings
+  weight: 100  
