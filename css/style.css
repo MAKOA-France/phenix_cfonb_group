@@ -1101,6 +1101,9 @@ p.link-to-send-mail.btn.btn-primary {
 #auth_box.password #bottom_part {
 	    /* margin-top: -110px; */
 }
+.section-user.role--authenticated .messages.messages--status {
+	display: none;
+}
 
 .page-user-password .form-actions.js-form-wrapper.form-wrapper {
 	display: inline-flex;
@@ -1118,6 +1121,45 @@ p.link-to-send-mail.btn.btn-primary {
 .page-user-password #block-b-zf-content .user-pass{
 	width : 100% !important;
 }
+
+.section-civicrm-group .layout.layout--twocol-section.layout--twocol-section--50-50 {
+    gap: 0;
+}
+
+.group-presentation-title {
+    font-size: .85rem;
+    font-weight: 500;
+    margin: 15px 0;
+}
+
+.group-presentation-description {
+    background-color: #f7f5f3;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+p.group-name {
+    margin: 20px 0 0;
+    font-size: 2rem;
+}
+
+.section-civicrm-group .group-detail-page h2.title-first-doc {
+    text-transform: uppercase;
+    font-size: medium;
+    font-weight: 500;
+    font-family: "new-order" !important;
+}
+
+.section-civicrm-group .group-detail-page aside#sidebar_left {
+    margin-right: 0;
+}
+
+.section-civicrm-group .detail-group-title .group-info {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
 .page-user-password .back-to-login {
 	
     margin-top: 1rem;
