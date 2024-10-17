@@ -356,6 +356,7 @@ function phenix_cfonb_group_preprocess_media(&$variables) {
         // Modify the file link.
         $file_uri = $file->getFileUri();
         $absolute_uri = file_create_url($file_uri);
+        //todo decommente for d10  $absolute_uri = \Drupal::service('file_url_generator')->generateAbsoluteString($file_uri);
 
         $file->setFileUri($absolute_uri);
         // Update the media variable with the modified file.

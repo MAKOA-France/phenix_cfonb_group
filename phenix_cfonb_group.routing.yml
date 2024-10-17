@@ -22,6 +22,6 @@ phenix_cfonb_group.form.settings:
   path: '/admin/config/system/mail-content-form'
   defaults:
     _form: '\Drupal\phenix_cfonb_group\Form\CustomConfigForm'
-    _title: 'Custom Form Settings ho'
+    _title: 'Mail envoyé aux nouveaux utilisateurs Drupal créés'
   requirements:
     _permission: 'access content'        
