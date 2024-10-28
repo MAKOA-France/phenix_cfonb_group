@@ -85,7 +85,9 @@ function phenix_cfonb_group_views_pre_view(ViewExecutable $view, $display_id, ar
  */
 function phenix_cfonb_group_form_alter (&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
 
-
+  if ($form['#form_id'] == 'user_pass') {
+    $form['actions']['submit']['#value'] = 'Réinitialiser';
+  }
 
 
   if ($form['#id'] == 'contact-message-demande-d-acces-a-l-extranet-form') {
