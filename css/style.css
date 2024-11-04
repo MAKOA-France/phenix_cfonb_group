@@ -473,6 +473,18 @@ width:100%;
 		  position: relative;
 		  right: auto;
 		}
+		
+		.content-c-nav {
+			padding-right: 0;
+			padding-left: 0;
+		}
+		.section-civicrm-group .grid-container.na-pages#main {
+			padding-left: 0;
+		}
+		
+		.section-civicrm-group .views-send-selection-form form {
+			position: relative;
+		}
 	  }
 
 /*** end 8 **/
@@ -1104,7 +1116,9 @@ p.link-to-send-mail.btn.btn-primary {
 .section-user.role--authenticated .messages.messages--status {
 	display: none;
 }
-
+.section-civicrm-group .grid-container.hero.communication:before {
+    right: -90px;
+}
 .page-user-password .form-actions.js-form-wrapper.form-wrapper {
 	display: inline-flex;
 }
