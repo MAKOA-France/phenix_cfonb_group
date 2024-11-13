@@ -568,6 +568,7 @@ Vignettes des Documents (Media) alignées avec le name
 .site-logo img {
     height: 118px;
     /*width: 190px;*/
+	padding-bottom: 10px;
 }
 @media all and (max-device-width: 480px){
   .site-logo img {
