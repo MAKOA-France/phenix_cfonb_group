@@ -368,8 +368,97 @@ function phenix_cfonb_group_preprocess_media(&$variables) {
         // $variables['file_url'] = $absolute_uri;
       }
     }
+    $media = $variables['media'];
+    if ($media->hasField('field_media_document') && !$media->get('field_media_document')->isEmpty()) {
+      $file = $media->get('field_media_document')->entity;
+
+      if ($file) {
+        // Get file details.
+        $file_url = $file->createFileUrl();
+        $file_name = $file->getFilename();
+        $idTokenized = base64_encode($media->id());
+
+
+        // Get the file URI.
+        $file_uri = $file->getFileUri();
+
+        // Check if the file URI is a remote URL.
+        if (filter_var($file_uri, FILTER_VALIDATE_URL)) {
+          // Use cURL or file_get_contents to get the remote file size.
+          $headers = get_headers($file_uri, 1);
+          if (isset($headers['Content-Length'])) {
+            $file_size_in_bytes = $headers['Content-Length'];
+            $zize = round($file_size_in_bytes / 1024, 2);
+          }
+        }
+
+        // If the file is local, resolve its real path.
+        $file_path = \Drupal::service('file_system')->realpath($file_uri);
+        if ($file_path && file_exists($file_path)) {
+          $file_size_in_bytes = filesize($file_path);
+          $zize = round($file_size_in_bytes / 1024, 2);
+        }
+        if (!$file_path)  {
+          $zize = get_remote_file_size($file_uri);
+        }
+
+
+        // Customize the rendered output.
+        $variables['content']['custom_file_link'] = [
+          '#type' => 'markup',
+          '#markup' => '<a data-pat="'.$file_uri.'"  data-patz="'.$file_uri.'" href="/media/' . $media->id() . '/download?token='.$idTokenized.'" target="_blank" class="custom-document-link">' . $file_name . '</a> ('.$zize.') ',
+          '#allowed_tags' => ['a'],
+        ];
+
+        // Optionally hide the default field output.
+        unset($variables['content']['field_media_document']);
+      }
+    }
   }
 }
+
+
+/**
+ * Obtenir la taille d'un fichier à partir d'une URL distante.
+ *
+ * @param string $file_url
+ *   L'URL du fichier.
+ *
+ * @return float|null
+ *   La taille du fichier en kilooctets (Ko), ou NULL si elle ne peut pas être déterminée.
+ */
+function get_remote_file_size(string $file_url): ?float {
+  // Initialiser une session cURL.
+  $ch = curl_init($file_url);
+
+  // Configurer cURL pour ne récupérer que les en-têtes.
+  curl_setopt($ch, CURLOPT_NOBODY, true);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($ch, CURLOPT_HEADER, true);
+  curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); // Suivre les redirections si nécessaire.
+
+  // Exécuter cURL.
+  curl_exec($ch);
+
+  // Récupérer les informations sur la requête.
+  $file_size = null;
+  if (!curl_errno($ch)) {
+    $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    if ($http_code == 200) {
+      // Récupérer les en-têtes et trouver Content-Length.
+      $content_length = curl_getinfo($ch, CURLINFO_CONTENT_LENGTH_DOWNLOAD);
+      if ($content_length > 0) {
+        $file_size = round($content_length / 1024, 2); // Convertir en Ko.
+      }
+    }
+  }
+
+  // Fermer la session cURL.
+  curl_close($ch);
+
+  return $file_size;
+}
+
 
 /**
  * Implements hook_views_data().
